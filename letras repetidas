@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<string.h>
+void maiusculas(char letras[]);
+void repetidas(char maiusculas[]);
+
+int main(void){
+    char letras[201];
+    scanf("%s", letras);
+   
+    maiusculas(letras);
+    repetidas(maiusculas);
+
+    printf("%s", letras);
+    return 0;
+
+}
+void maiusculas(char letras[]){
+    int tamanho = strlen(letras);
+
+    for(int i = 0; i < tamanho; i++){
+        if(letras[i] >= 'a' && letras[i] <= 'z'){
+            letras[i] = letras[i] - 'a' + 'A';
+        }
+    }
+}
+void repetidas(char maiusculas[]){
+    int n = strlen(maiusculas);
+    int max = 0;
+    int pos = 0;
+    for(int i = 0; i < n; i++){
+        if ()
+
+    }
+}
