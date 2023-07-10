@@ -1,41 +1,43 @@
 #include<stdio.h>
-#include<string.h>
 int main(void){
-    int numero, j = 0;
-    char binario[j];
-    scanf("%d", &numero);
+    int entrada, i = 0;
+    scanf("%d", &entrada);
+    char binario[i];
+    while(entrada != 0){
+        
+        i++;
+        binario[i] = entrada%16;
+            if (binario[i] == 10){
+                binario[i] = 'A';
+            }
+            if (binario[i] == 11){
+                binario[i] = 'B';
+            }
+            if (binario[i] == 12){
+                binario[i] = 'C';
+            }
+            if (binario[i] == 13){
+                binario[i] = 'D';
+            }
+            if (binario[i] == 14){
+                binario[i] = 'E';
+            }
+            if (binario[i] == 15){
+                binario[i] = 'F';
+            }
 
-    while(numero != 0){
-        j++;
-        binario[j] = numero%16;
-            if(binario[j] == 10){
-                binario[j] = 'A';
-            }
-            if(binario[j] == 11){
-                binario[j] = 'B';
-            }
-            if(binario[j] == 12){
-                binario[j] = 'C';
-            }
-             if(binario[j] == 13){
-                binario[j] = 'D';
-            }
-             if(binario[j] == 14){
-                binario[j] = 'E';
-            }
-             if(binario[j] == 15){
-                binario[j] = 'F';
-            }
-        numero = numero/16;
-    
-    for(int i = j; i > 0; i -- ){
-        if(binario[i] >= 65 && binario[i] <= 70){
-            printf("%c", binario[i]);
+            entrada /= 16;
+
+
+    }
+
+    for (int j = i; j > 0; j--){
+        if (binario[j] >= 65 && binario[j] <= 90){
+            printf("%c", binario[j]);
+        } else {
+            printf("%d", binario[j]);
         }
-        else if(binario[i]<10){
-            printf("%d", binario[i]);
 
     }
-    }
-}
+    return 0;
 }
