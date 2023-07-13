@@ -1,0 +1,29 @@
+#include<stdio.h>
+int contador;
+
+int fibo(int x){
+    
+    contador++;
+    
+    if (x < 2){
+        return x;
+
+    }
+
+        return fibo(x-1) + fibo(x-2);
+}
+
+int main(void){
+    int n, resposta;
+    scanf("%d", &n);
+
+    contador = 0;
+    resposta = fibo(n);
+
+
+    printf("%d %d", resposta, contador - 1);
+
+    return 0;
+
+
+}
