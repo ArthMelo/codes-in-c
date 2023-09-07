@@ -12,18 +12,19 @@ int mdc(int m, int n)
 int main(void)
 {
     int x, y, resposta;
-    printf("Digite dois numeros, sendo o primeiro deles o maior\n");
+    printf("Digite dois numeros\n");
     scanf("%d %d", &x, &y);
 
     if (x < y)
     {
-        printf("Numeros invalidos\n");
+        resposta = mdc(y, x);
+        printf("O MDC eh %d", resposta);
         return 0;
     }
 
     resposta = mdc(x, y);
 
-    printf("%d", resposta);
+    printf("O MDC eh %d", resposta);
     return 0;
 
 }
