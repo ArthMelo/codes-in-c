@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int mdc(int a, int b){
+    if(b == 0){
+        return a;
+    } else {
+        return mdc(b, a%b);
+    }
+}
+
+int expo(int phi){
+    int e = rand()%phi;
+    if(mdc(phi, e) == 1){
+        return e;
+    }
+    else{
+        return expo(phi);
+    }
+}
+
+int prime(int x){   
+    int d, contador = 0;
+    for(int i = 1; i < x; i++){
+    
+    if(x%i == 0){
+        contador++;
+    }
+    }
+    if(contador > 1){
+        return prime(x-1);
+    }
+    else {
+        return x;
+    }
+}
+
+int main(){
+    int p, q, pp, qq;
+    p = rand()%10000;
+    q = rand()%10000;
+
+    pp = prime(p);
+    qq = prime(q);
+
+    //descobrir n = pq;
+    int n = pp*qq;
+
+    //descobrir phi de n = (p-1)*(q-1) 
+    int phi = (pp-1)*(qq-1);
+    
+    int e = expo(phi);
+
+    //d*e mod phi == 1
+
+    printf("P primo = %d\nQ primo = %d\n", pp, qq);
+    printf("N = %d\n", n);
+    printf("Phi de N = %d\n", phi);
+    printf("E = %d\n", e);
+    return 0;
+}
