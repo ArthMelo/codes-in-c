@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int mdc(int a, int b){
+long long mdc(long long a, long long b){
     if(b == 0){
         return a;
     } else {
@@ -9,7 +9,7 @@ int mdc(int a, int b){
     }
 }
 
-int expo(int phi){
+long long expo(long long phi){
     int e = rand()%phi;
     if(mdc(phi, e) == 1){
         return e;
@@ -19,7 +19,7 @@ int expo(int phi){
     }
 }
 
-int prime(int x){   
+long long prime(long long x){   
     int d, contador = 0;
     for(int i = 1; i < x; i++){
     
@@ -36,26 +36,26 @@ int prime(int x){
 }
 
 int main(){
-    int p, q, pp, qq;
-    p = rand()%10000;
-    q = rand()%10000;
+    long long p, q, pp, qq;
+    p = rand()%1000000;
+    q = rand()%1000000;
 
     pp = prime(p);
     qq = prime(q);
 
     //descobrir n = pq;
-    int n = pp*qq;
+    long long n = pp*qq;
 
     //descobrir phi de n = (p-1)*(q-1) 
-    int phi = (pp-1)*(qq-1);
+    long long phi = (pp-1)*(qq-1);
     
-    int e = expo(phi);
+    long long e = expo(phi);
 
     //d*e mod phi == 1
 
-    printf("P primo = %d\nQ primo = %d\n", pp, qq);
-    printf("N = %d\n", n);
-    printf("Phi de N = %d\n", phi);
-    printf("E = %d\n", e);
+    printf("P primo = %lld\nQ primo = %lld\n", pp, qq);
+    printf("N = %lld\n", n);
+    printf("Phi de N = %lld\n", phi);
+    printf("E = %lld\n", e);
     return 0;
 }
