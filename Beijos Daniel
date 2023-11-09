@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 long long mdc(long long a, long long b);
 
@@ -8,28 +8,29 @@ long long expo(long long phi);
 
 long long prime(long long x);
 
-int main(){
+int main()
+{
     long long p, q, pp, qq; // p e q primos aleatórios
-    long long e; //expoente publico
-    long long phi; //phi(n) = (p-1)*(q-1)
-    long long n; // n = pq
-    long long d; //chave privada
+    long long e;            // expoente publico
+    long long phi;          // phi(n) = (p-1)*(q-1)
+    long long n;            // n = pq
+    long long d;            // chave privada
 
-    pp = rand()%1000000000;
-    qq = rand()%1000000000; //pegar numeros aleatorios
+    pp = rand() % 1000000000;
+    qq = rand() % 1000000000; // pegar numeros aleatorios
 
     p = prime(pp);
-    q = prime(qq); //transformar os numeros em primos aleatorios
+    q = prime(qq); // transformar os numeros em primos aleatorios
 
-    n = p*q; //descobrir n
+    n = p * q; // descobrir n
 
-    phi = (p-1)*(q-1); //descobrir phi de n
-   
-    e = expo(phi); //descobrir expoente publico
+    phi = (p - 1) * (q - 1); // descobrir phi de n
+
+    e = expo(phi); // descobrir expoente publico
 
     d = inverse_of(e, phi);
 
-    //d*e mod phi == 1
+    // d*e mod phi == 1
 
     printf("P primo = %lld\nQ primo = %lld\n", pp, qq);
     printf("N = %lld\n", n);
@@ -39,37 +40,48 @@ int main(){
     return 0;
 }
 
-
-long long mdc(long long a, long long b){
-    if(b == 0){
+long long mdc(long long a, long long b)
+{
+    if (b == 0)
+    {
         return a;
-    } else {
-        return mdc(b, a%b);
+    }
+    else
+    {
+        return mdc(b, a % b);
     }
 }
 
-long long expo(long long phi){
-    int e = rand()%phi;
-    if(mdc(phi, e) == 1){
+long long expo(long long phi)
+{
+    int e = rand() % phi;
+    if (mdc(phi, e) == 1)
+    {
         return e;
     }
-    else{
+    else
+    {
         return expo(phi);
     }
 }
 
-long long prime(long long x){   
+long long prime(long long x)
+{
     int d, contador = 0;
-    for(int i = 1; i < x; i++){
-    
-    if(x%i == 0){
-        contador++;
+    for (int i = 1; i < x; i++)
+    {
+
+        if (x % i == 0)
+        {
+            contador++;
+        }
     }
+    if (contador > 1)
+    {
+        return prime(x - 1);
     }
-    if(contador > 1){
-        return prime(x-1);
-    }
-    else {
+    else
+    {
         return x;
     }
 }
