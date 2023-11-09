@@ -1,5 +1,44 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
+
+long long mdc(long long a, long long b);
+
+long long expo(long long phi);
+
+long long prime(long long x);
+
+int main(){
+    long long p, q, pp, qq; // p e q primos aleatórios
+    long long e; //expoente publico
+    long long phi; //phi(n) = (p-1)*(q-1)
+    long long n; // n = pq
+    long long d; //chave privada
+
+    pp = rand()%100;
+    qq = rand()%100; //pegar numeros aleatorios
+
+    p = prime(pp);
+    q = prime(qq); //transformar os numeros em primos aleatorios
+
+    n = p*q; //descobrir n
+
+    phi = (p-1)*(q-1); //descobrir phi de n
+   
+    e = expo(phi); //descobrir expoente publico
+
+    d = inverse_of(e, phi);
+
+    //d*e mod phi == 1
+
+    printf("P primo = %lld\nQ primo = %lld\n", pp, qq);
+    printf("N = %lld\n", n);
+    printf("Phi(n) = %lld\n", phi);
+    printf("E = %lld\n", e);
+    printf("%lld\n", d);
+    return 0;
+}
+
 
 long long mdc(long long a, long long b){
     if(b == 0){
@@ -33,29 +72,4 @@ long long prime(long long x){
     else {
         return x;
     }
-}
-
-int main(){
-    long long p, q, pp, qq;
-    p = rand()%1000000;
-    q = rand()%1000000;
-
-    pp = prime(p);
-    qq = prime(q);
-
-    //descobrir n = pq;
-    long long n = pp*qq;
-
-    //descobrir phi de n = (p-1)*(q-1) 
-    long long phi = (pp-1)*(qq-1);
-    
-    long long e = expo(phi);
-
-    //d*e mod phi == 1
-
-    printf("P primo = %lld\nQ primo = %lld\n", pp, qq);
-    printf("N = %lld\n", n);
-    printf("Phi de N = %lld\n", phi);
-    printf("E = %lld\n", e);
-    return 0;
 }
