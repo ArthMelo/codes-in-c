@@ -28,15 +28,12 @@ int main()
 
     e = expo(phi); // descobrir expoente publico
 
-    d = inverse_of(e, phi);
-
     // d*e mod phi == 1
 
     printf("P primo = %lld\nQ primo = %lld\n", pp, qq);
     printf("N = %lld\n", n);
     printf("Phi(n) = %lld\n", phi);
     printf("E = %lld\n", e);
-    printf("%lld\n", d);
     return 0;
 }
 
